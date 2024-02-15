@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { Chips } from "primereact/chips";
 import { Button } from "primereact/button";
+import { Chips } from "primereact/chips";
+import { useState } from "react";
 import "./App.css";
 
 export const App = () => {
@@ -21,11 +21,17 @@ export const App = () => {
         const newBlacks: string[] = [];
         for (let i = 0; i < participants.length; i++) {
             if (whitesFirst) {
-                if (i % 2 === 0) newWhites.push(participants[i]);
-                else newBlacks.push(participants[i]);
+                if (i % 2 === 0) {
+                    newWhites.push(participants[i]);
+                } else {
+                    newBlacks.push(participants[i]);
+                }
             } else {
-                if (i % 2 === 0) newBlacks.push(participants[i]);
-                else newWhites.push(participants[i]);
+                if (i % 2 === 0) {
+                    newBlacks.push(participants[i]);
+                } else {
+                    newWhites.push(participants[i]);
+                }
             }
         }
         setWhites(newWhites);
@@ -34,10 +40,10 @@ export const App = () => {
 
     return (
         <div className="container">
-            <h1>&#9917; Terminator &#9917;</h1>
+            <h1>⚽ Terminator ⚽</h1>
             <Chips
                 value={members}
-                onChange={(e) => setMembers(e.value)}
+                onChange={(e) => setMembers(e.value!)}
                 separator=","
                 placeholder="Enter participant's name then press enter"
             />
@@ -45,7 +51,7 @@ export const App = () => {
             {whites.length > 0 && blacks.length > 0 && (
                 <div className="results">
                     <section>
-                        <h2>&#9898; Whites &#9898;</h2>
+                        <h2>⚪ Whites ⚪</h2>
                         <ul>
                             {whites.map((x) => (
                                 <li key={x}>{x}</li>
@@ -53,7 +59,7 @@ export const App = () => {
                         </ul>
                     </section>
                     <section>
-                        <h2>&#9899; Blacks &#9899;</h2>
+                        <h2>⚫ Blacks ⚫ </h2>
                         <ul>
                             {blacks.map((x) => (
                                 <li key={x}>{x}</li>
